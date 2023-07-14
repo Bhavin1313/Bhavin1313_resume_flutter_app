@@ -96,7 +96,9 @@ class _BuildOptionsState extends State<BuildOptions> {
                           ),
                           Spacer(),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pushNamed(e["route_name"]);
+                            },
                             icon: Icon(
                               Icons.navigate_next,
                               size: 30,
