@@ -12,4 +12,13 @@ class Globals {
   static String address1 = "";
   static String address2 = "";
   static String address3 = "";
+
+  static TextEditingController namec = TextEditingController();
+  static TextEditingController emailc = TextEditingController();
+  static TextEditingController numberc = TextEditingController();
+  static TextEditingController address1c = TextEditingController();
+  static TextEditingController address2c = TextEditingController();
+  static TextEditingController address3c = TextEditingController();
+
+  static bool off1 = true;
 }
