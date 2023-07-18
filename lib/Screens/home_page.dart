@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               color: Globals.bgColor,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   SizedBox(
                     height: 10,
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                     "RESUMES",
                     style: TextStyle(
                       color: Globals.textColor,
-                      fontSize: 22,
+                      fontSize: 20,
                     ),
                   ),
                 ],
@@ -62,12 +62,13 @@ class _HomePageState extends State<HomePage> {
                   height: 20,
                 ),
                 Container(
-                  height: 80,
-                  width: 80,
+                  height: 60,
+                  width: 60,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                          "lib/utils/Assets/Build_Icons/open-cardboard-box.png"),
+                        "lib/utils/Assets/Build_Icons/open-cardboard-box.png",
+                      ),
                     ),
                   ),
                 ),
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   "No Resumes + Create new resume.",
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Globals.text1,
                     fontSize: 20,
                   ),
                 )

@@ -16,7 +16,7 @@ class _LogInState extends State<LogIn> {
       appBar: AppBar(
         backgroundColor: Globals.bgColor,
         title: Text(
-          "Sign in",
+          "Login Here",
           style: TextStyle(
             color: Globals.textColor,
             fontSize: 25,
@@ -27,80 +27,80 @@ class _LogInState extends State<LogIn> {
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(10),
             height: 600,
-            width: 300,
+            width: 350,
             color: Colors.white,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  height: 100,
-                  width: 100,
+                  height: 300,
+                  width: 350,
                   decoration: BoxDecoration(
-                      image: DecorationImage(
-                    image: NetworkImage(
-                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSPNFbGEC05jhCsuQVcspLSxrvxsxTovSraw&usqp=CAU",
-                    ),
-                    fit: BoxFit.cover,
-                  )),
-                ),
-                SizedBox(
-                  height: 90,
-                ),
-                TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    hintText: "Enter Email",
-                    hintStyle: TextStyle(
-                      color: Colors.red,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        "https://cdn.dribbble.com/users/527197/screenshots/15295153/media/fd7a8a9bfb90a33335cff2243c8bfa24.gif",
+                      ),
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                TextFormField(
-                  obscureText: Globals.off1,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          Globals.off1 = !Globals.off1;
-                        });
-                      },
-                      icon: (Globals.off1)
-                          ? Text(
-                              "Show",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
-                          : Text(
-                              "Hide",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                Column(
+                  children: [
+                    TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        hintText: "Enter Email",
+                        hintStyle: TextStyle(
+                          color: Colors.red,
+                        ),
+                      ),
                     ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
+                    SizedBox(
+                      height: 10,
                     ),
-                    hintText: "Enter Password",
-                    hintStyle: TextStyle(
-                      color: Colors.red,
+                    TextFormField(
+                      obscureText: Globals.off1,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              Globals.off1 = !Globals.off1;
+                            });
+                          },
+                          icon: (Globals.off1)
+                              ? Text(
+                                  "Show",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                )
+                              : Text(
+                                  "Hide",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        hintText: "Enter Password",
+                        hintStyle: TextStyle(
+                          color: Colors.red,
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-                SizedBox(
-                  height: 50,
-                ),
-                GestureDetector(
+                InkWell(
                   onTap: () {
                     Navigator.pushReplacementNamed(context, 'home');
                   },
@@ -108,7 +108,14 @@ class _LogInState extends State<LogIn> {
                     height: 50,
                     width: 260,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                            offset: Offset(0.5, 3),
+                            color: Colors.grey,
+                            blurRadius: 20,
+                            spreadRadius: 3)
+                      ],
+                      borderRadius: BorderRadius.circular(30),
                       color: Globals.bgColor,
                     ),
                     alignment: Alignment.center,

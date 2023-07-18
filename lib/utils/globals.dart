@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Globals {
-  static Color textColor = Colors.white;
-  static Color bgColor = Colors.blueAccent;
+  static Color textColor = Color(0xffffffff);
+  static Color bgColor = Color(0xff0475ff);
+  static Color text1 = Color(0xffb0b0b0);
 
   static int initialIndex = 0;
 

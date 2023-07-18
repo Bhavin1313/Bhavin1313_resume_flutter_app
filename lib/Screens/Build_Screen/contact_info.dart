@@ -25,15 +25,36 @@ class _ContectInfoState extends State<ContectInfo> {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              formKey.currentState!.reset();
+              Globals.namec.clear();
+              Globals.emailc.clear();
+              Globals.numberc.clear();
+              Globals.address1c.clear();
+              Globals.address2c.clear();
+              Globals.address3c.clear();
+            },
             icon: Icon(
-              Icons.save_alt,
+              Icons.refresh,
               color: Globals.textColor,
             ),
           ),
           IconButton(
             onPressed: () {
-              formKey.currentState!.validate();
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Saved Successfully..."),
+                  ),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Plese Enter Full Detail..."),
+                  ),
+                );
+              }
             },
             icon: Icon(
               Icons.check,
@@ -154,7 +175,7 @@ class _ContectInfoState extends State<ContectInfo> {
                 children: [
                   SingleChildScrollView(
                     child: Form(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      // autovalidateMode: AutovalidateMode.onUserInteraction,
                       key: formKey,
                       child: Column(
                         children: [
@@ -181,6 +202,11 @@ class _ContectInfoState extends State<ContectInfo> {
                                         Expanded(
                                           flex: 4,
                                           child: TextFormField(
+                                            onFieldSubmitted: (val) {
+                                              setState(() {
+                                                Globals.namec.text = val;
+                                              });
+                                            },
                                             validator: (val) {
                                               if (val!.isEmpty) {
                                                 return "Plese Enter Name";
@@ -213,6 +239,11 @@ class _ContectInfoState extends State<ContectInfo> {
                                         Expanded(
                                           flex: 4,
                                           child: TextFormField(
+                                            onFieldSubmitted: (val) {
+                                              setState(() {
+                                                Globals.emailc.text = val;
+                                              });
+                                            },
                                             validator: (val) {
                                               if (val!.isEmpty) {
                                                 return "Plese Enter Email";
@@ -247,6 +278,11 @@ class _ContectInfoState extends State<ContectInfo> {
                                         Expanded(
                                           flex: 4,
                                           child: TextFormField(
+                                            onFieldSubmitted: (val) {
+                                              setState(() {
+                                                Globals.numberc.text = val;
+                                              });
+                                            },
                                             validator: (val) {
                                               if (val!.isEmpty) {
                                                 return "Plese Enter Number";
@@ -280,6 +316,11 @@ class _ContectInfoState extends State<ContectInfo> {
                                         Expanded(
                                           flex: 4,
                                           child: TextFormField(
+                                            onFieldSubmitted: (val) {
+                                              setState(() {
+                                                Globals.address1c.text = val;
+                                              });
+                                            },
                                             validator: (val) {
                                               if (val!.isEmpty) {
                                                 return "Plese Enter Address";
@@ -310,6 +351,11 @@ class _ContectInfoState extends State<ContectInfo> {
                                         Expanded(
                                           flex: 4,
                                           child: TextFormField(
+                                            onFieldSubmitted: (val) {
+                                              setState(() {
+                                                Globals.address2c.text = val;
+                                              });
+                                            },
                                             validator: (val) {
                                               if (val!.isEmpty) {
                                                 return "Plese Enter Address1";
@@ -339,6 +385,11 @@ class _ContectInfoState extends State<ContectInfo> {
                                         Expanded(
                                           flex: 4,
                                           child: TextFormField(
+                                            onFieldSubmitted: (val) {
+                                              setState(() {
+                                                Globals.address3c.text = val;
+                                              });
+                                            },
                                             validator: (val) {
                                               if (val!.isEmpty) {
                                                 return "Plese Enter Address";
