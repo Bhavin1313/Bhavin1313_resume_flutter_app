@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../utils/globals.dart';
 
@@ -10,6 +11,7 @@ class ContectInfo extends StatefulWidget {
 }
 
 class _ContectInfoState extends State<ContectInfo> {
+  XFile? image;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   void initState() {
@@ -420,10 +422,46 @@ class _ContectInfoState extends State<ContectInfo> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.black,
+                  Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          margin: EdgeInsets.all(20),
+                          padding: EdgeInsets.all(10),
+                          height: h * .33,
+                          width: w * .9,
+                          color: Globals.textColor,
+                          alignment: Alignment.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                radius: 70,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.camera_alt,
+                                      size: 35,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.panorama,
+                                      size: 35,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

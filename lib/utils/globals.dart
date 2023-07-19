@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Globals {
   static Color textColor = Color(0xffffffff);
@@ -34,6 +35,8 @@ class Globals {
   static TextEditingController r_namec = TextEditingController();
   static TextEditingController designationc = TextEditingController();
   static TextEditingController institutec = TextEditingController();
+
+  static ImagePicker picker = ImagePicker();
 
   static bool off1 = true;
 }
