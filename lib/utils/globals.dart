@@ -13,6 +13,13 @@ class Globals {
   static String address1 = "";
   static String address2 = "";
   static String address3 = "";
+  static String course = "";
+  static String school = "";
+  static String result = "";
+  static String pass = "";
+  static String r_name = "";
+  static String designation = "";
+  static String institute = "";
 
   static TextEditingController namec = TextEditingController();
   static TextEditingController emailc = TextEditingController();
@@ -20,6 +27,13 @@ class Globals {
   static TextEditingController address1c = TextEditingController();
   static TextEditingController address2c = TextEditingController();
   static TextEditingController address3c = TextEditingController();
+  static TextEditingController coursec = TextEditingController();
+  static TextEditingController schoolc = TextEditingController();
+  static TextEditingController resultc = TextEditingController();
+  static TextEditingController passc = TextEditingController();
+  static TextEditingController r_namec = TextEditingController();
+  static TextEditingController designationc = TextEditingController();
+  static TextEditingController institutec = TextEditingController();
 
   static bool off1 = true;
 }
