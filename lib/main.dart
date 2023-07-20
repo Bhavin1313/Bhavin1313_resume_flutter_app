@@ -22,6 +22,7 @@ void main() {
         'contact_info': (context) => ContectInfo(),
         'education': (context) => Education(),
         'references': (context) => References(),
+        // 'personl': (context) => Personal(),
       },
     ),
   );

@@ -439,7 +439,7 @@ class _ContectInfoState extends State<ContectInfo> {
                             children: [
                               CircleAvatar(
                                 radius: 70,
-                                //   foregroundImage: (image != null)?NetworkImage(
+                                //   backgroundImage: (image == null)?NetworkImage(
                                 //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQchVC-C6AT2fkdVuAgEv_PABiiM4oXPGkekw&usqp=CAU",
                                 //   ): FileImage(
                                 // File("${image?.path}",),
@@ -455,11 +455,10 @@ class _ContectInfoState extends State<ContectInfo> {
                                 children: [
                                   IconButton(
                                     onPressed: () async {
-                                      setState(() async {
-                                        image = await Globals.picker.pickImage(
-                                          source: ImageSource.camera,
-                                        );
-                                      });
+                                      image = await Globals.picker.pickImage(
+                                        source: ImageSource.camera,
+                                      );
+                                      setState(() {});
                                     },
                                     icon: Icon(
                                       Icons.camera_alt,
@@ -467,12 +466,11 @@ class _ContectInfoState extends State<ContectInfo> {
                                     ),
                                   ),
                                   IconButton(
-                                    onPressed: () async {
-                                      setState(() async {
-                                        image = await Globals.picker.pickImage(
-                                          source: ImageSource.gallery,
-                                        );
-                                      });
+                                    onPressed: ()  async {
+                                      image = await Globals.picker.pickImage(
+                                        source: ImageSource.gallery,
+                                      );
+                                      setState(()  {});
                                     },
                                     icon: Icon(
                                       Icons.panorama,
