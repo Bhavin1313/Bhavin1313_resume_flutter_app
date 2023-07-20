@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -437,19 +439,41 @@ class _ContectInfoState extends State<ContectInfo> {
                             children: [
                               CircleAvatar(
                                 radius: 70,
+                                //   foregroundImage: (image != null)?NetworkImage(
+                                //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQchVC-C6AT2fkdVuAgEv_PABiiM4oXPGkekw&usqp=CAU",
+                                //   ): FileImage(
+                                // File("${image?.path}",),
+                                //   ),
+                                foregroundImage: FileImage(
+                                  File(
+                                    "${image?.path}",
+                                  ),
+                                ),
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () async {
+                                      setState(() async {
+                                        image = await Globals.picker.pickImage(
+                                          source: ImageSource.camera,
+                                        );
+                                      });
+                                    },
                                     icon: Icon(
                                       Icons.camera_alt,
                                       size: 35,
                                     ),
                                   ),
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () async {
+                                      setState(() async {
+                                        image = await Globals.picker.pickImage(
+                                          source: ImageSource.gallery,
+                                        );
+                                      });
+                                    },
                                     icon: Icon(
                                       Icons.panorama,
                                       size: 35,
