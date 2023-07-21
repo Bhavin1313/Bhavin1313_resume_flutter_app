@@ -7,12 +7,12 @@ List<Map<String, dynamic>> MyBuildOptions = [
   {
     "name": "Carrier Objective",
     "icon": "lib/utils/Assets/Build_Icons/briefcase.png",
-    "route_name": "contact_info",
+    "route_name": "carrier_obj",
   },
   {
     "name": "Personal Details",
     "icon": "lib/utils/Assets/Build_Icons/user.png",
-    "route_name": "contact_info",
+    "route_name": "personl_details",
   },
   {
     "name": "Education",
@@ -37,7 +37,7 @@ List<Map<String, dynamic>> MyBuildOptions = [
   {
     "name": "Projects",
     "icon": "lib/utils/Assets/Build_Icons/project.png",
-    "route_name": "contact_info",
+    "route_name": "projects",
   },
   {
     "name": "Achievements",
