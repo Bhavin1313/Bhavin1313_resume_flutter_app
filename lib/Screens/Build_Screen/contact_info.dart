@@ -439,11 +439,6 @@ class _ContectInfoState extends State<ContectInfo> {
                             children: [
                               CircleAvatar(
                                 radius: 70,
-                                //   backgroundImage: (image == null)?NetworkImage(
-                                //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQchVC-C6AT2fkdVuAgEv_PABiiM4oXPGkekw&usqp=CAU",
-                                //   ): FileImage(
-                                // File("${image?.path}",),
-                                //   ),
                                 foregroundImage: FileImage(
                                   File(
                                     "${image?.path}",
@@ -466,11 +461,11 @@ class _ContectInfoState extends State<ContectInfo> {
                                     ),
                                   ),
                                   IconButton(
-                                    onPressed: ()  async {
+                                    onPressed: () async {
                                       image = await Globals.picker.pickImage(
                                         source: ImageSource.gallery,
                                       );
-                                      setState(()  {});
+                                      setState(() {});
                                     },
                                     icon: Icon(
                                       Icons.panorama,
