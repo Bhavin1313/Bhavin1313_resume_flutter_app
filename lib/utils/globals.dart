@@ -46,6 +46,13 @@ class Globals {
   static String achievement2 = "";
   static String skills1 = "";
   static String skills2 = "";
+  static String compny = "";
+  static String roles1 = "";
+  static String schoole = "";
+  static String botton = "";
+  static String dis = "";
+  static String date = "";
+  static String city = "";
 
   static TextEditingController namec = TextEditingController();
   static TextEditingController emailc = TextEditingController();
@@ -69,6 +76,9 @@ class Globals {
   static TextEditingController achievement2c = TextEditingController();
   static TextEditingController skills1c = TextEditingController();
   static TextEditingController skills2c = TextEditingController();
+  static TextEditingController compnyc = TextEditingController();
+  static TextEditingController roles1c = TextEditingController();
+  static TextEditingController schoolec = TextEditingController();
 
   static TextEditingController rolesc = TextEditingController();
   static TextEditingController technologic = TextEditingController();

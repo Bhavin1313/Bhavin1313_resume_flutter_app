@@ -71,7 +71,7 @@ class _CarrierState extends State<Carrier> {
                   Container(
                     margin: EdgeInsets.only(top: 30),
                     padding: EdgeInsets.all(15),
-                    height: h * .35,
+                    height: h * .20,
                     width: w * .9,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -108,9 +108,10 @@ class _CarrierState extends State<Carrier> {
                             },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.grey,
-                              )),
+                                borderSide: BorderSide(
+                                  color: Colors.grey,
+                                ),
+                              ),
                               hintText: "Descripation",
                               hintStyle: TextStyle(
                                 color: Colors.grey,

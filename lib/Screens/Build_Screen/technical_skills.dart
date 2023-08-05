@@ -1,21 +1,27 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/globals.dart';
 
-class TechnicalSkills extends StatefulWidget {
-  const TechnicalSkills({Key? key}) : super(key: key);
+class Technical extends StatefulWidget {
+  const Technical({super.key});
 
   @override
-  State<TechnicalSkills> createState() => _TechnicalSkillsState();
+  State<Technical> createState() => _TechnicalState();
 }
 
-class _TechnicalSkillsState extends State<TechnicalSkills> {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+class _TechnicalState extends State<Technical> {
+  List AllTextFields = [];
+  List<TextEditingController> AllController = [];
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    AllController.add(TextEditingController());
+    AllController.add(TextEditingController());
+
+    AllTextFields.add(Row());
+    AllTextFields.add(Row());
   }
 
   Widget build(BuildContext context) {
@@ -24,42 +30,7 @@ class _TechnicalSkillsState extends State<TechnicalSkills> {
     return Scaffold(
       backgroundColor: Color(0xffededed),
       appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {
-              formKey.currentState!.reset();
-              Globals.skills1c.clear();
-              Globals.skills2c.clear();
-            },
-            icon: Icon(
-              Icons.refresh,
-              color: Globals.textColor,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text("Saved Successfully..."),
-                  ),
-                );
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text("Plese Enter Full Detail..."),
-                  ),
-                );
-              }
-            },
-            icon: Icon(
-              Icons.check,
-              color: Globals.textColor,
-            ),
-          ),
-        ],
-        toolbarHeight: 140,
+        toolbarHeight: 120,
         backgroundColor: Globals.bgColor,
         leading: IconButton(
           onPressed: () {
@@ -79,140 +50,107 @@ class _TechnicalSkillsState extends State<TechnicalSkills> {
         ),
         centerTitle: true,
       ),
-      body: GestureDetector(
-        onTap: () {
-          FocusManager.instance.primaryFocus?.unfocus();
-        },
-        child: Form(
-          key: formKey,
-          child: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(15),
-                    margin: EdgeInsets.only(top: 30),
-                    height: h * .33,
-                    width: w * .9,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Globals.textColor,
-                    ),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: Text(
-                              "Enter Achievements",
-                              style: TextStyle(
-                                fontSize: 23,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                          TextFormField(
-                            onFieldSubmitted: (val) {
-                              setState(() {
-                                Globals.skills1c.text = val;
-                              });
-                            },
-                            validator: (val) {
-                              if (val!.isEmpty) {
-                                return "Plese Enter Course or Degree";
-                              }
-                            },
-                            controller: Globals.skills1c,
-                            onChanged: (val) {
-                              setState(() {
-                                Globals.skills1 = val;
-                              });
-                            },
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.delete_rounded,
-                                  size: 25,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              hintText: "C programming",
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 17,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ),
-                          TextFormField(
-                            onFieldSubmitted: (val) {
-                              setState(() {
-                                Globals.skills2c.text = val;
-                              });
-                            },
-                            validator: (val) {
-                              if (val!.isEmpty) {
-                                return "Plese Enter Course or Degree";
-                              }
-                            },
-                            controller: Globals.skills2c,
-                            onChanged: (val) {
-                              setState(() {
-                                Globals.skills2 = val;
-                              });
-                            },
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.delete_rounded,
-                                  size: 25,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              hintText: "C programming",
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 17,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            height: h * .085,
-                            width: w,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.grey,
-                                width: 1,
-                              ),
-                            ),
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.add,
-                                size: 50,
-                                color: Colors.grey,
-                              ),
-                              alignment: Alignment.center,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 30,
               ),
-            ),
+              Container(
+                padding: EdgeInsets.all(20),
+                height: h * 0.45,
+                width: w * 0.9,
+                color: Globals.textColor,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(
+                        "Enter Your Skills",
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      ...AllTextFields.map(
+                        (e) => getTextFiled(
+                          i: AllTextFields.indexOf(
+                            (e),
+                          ),
+                        ),
+                      ).toList(),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          setState(
+                            () {
+                              AllController.add(TextEditingController());
+                              AllTextFields.add(
+                                  getTextFiled(i: AllTextFields.length));
+                            },
+                          );
+                        },
+                        child: Container(
+                          height: 60,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            color: Colors.transparent,
+                          ),
+                          child: Icon(
+                            Icons.add,
+                            size: 50,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
+  }
+
+  Row getTextFiled({required int i}) {
+    return Row(children: [
+      Expanded(
+        flex: 12,
+        child: TextField(
+          controller: AllController[i],
+          decoration: InputDecoration(
+            hintText: "  C Programing, Web Technical ",
+            hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
+          ),
+        ),
+      ),
+      Expanded(
+        flex: 2,
+        child: IconButton(
+          onPressed: () {
+            setState(
+              () {
+                AllController.removeAt(i);
+                AllTextFields.removeAt(i);
+              },
+            );
+          },
+          icon: Icon(
+            Icons.delete,
+            size: 40,
+          ),
+        ),
+      ),
+    ]);
   }
 }

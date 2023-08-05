@@ -3,18 +3,25 @@ import 'package:flutter/material.dart';
 import '../../utils/globals.dart';
 
 class Achievements extends StatefulWidget {
-  const Achievements({Key? key}) : super(key: key);
+  const Achievements({super.key});
 
   @override
   State<Achievements> createState() => _AchievementsState();
 }
 
 class _AchievementsState extends State<Achievements> {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  List AllTextFields = [];
+  List<TextEditingController> AllController = [];
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    AllController.add(TextEditingController());
+    AllController.add(TextEditingController());
+
+    AllTextFields.add(Row());
+    AllTextFields.add(Row());
   }
 
   Widget build(BuildContext context) {
@@ -23,42 +30,7 @@ class _AchievementsState extends State<Achievements> {
     return Scaffold(
       backgroundColor: Color(0xffededed),
       appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {
-              formKey.currentState!.reset();
-              Globals.achievement1c.clear();
-              Globals.achievement2c.clear();
-            },
-            icon: Icon(
-              Icons.refresh,
-              color: Globals.textColor,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text("Saved Successfully..."),
-                  ),
-                );
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text("Plese Enter Full Detail..."),
-                  ),
-                );
-              }
-            },
-            icon: Icon(
-              Icons.check,
-              color: Globals.textColor,
-            ),
-          ),
-        ],
-        toolbarHeight: 140,
+        toolbarHeight: 120,
         backgroundColor: Globals.bgColor,
         leading: IconButton(
           onPressed: () {
@@ -70,7 +42,7 @@ class _AchievementsState extends State<Achievements> {
           ),
         ),
         title: Text(
-          "Achievements",
+          "Achivements",
           style: TextStyle(
             color: Globals.textColor,
             fontSize: 20,
@@ -78,140 +50,107 @@ class _AchievementsState extends State<Achievements> {
         ),
         centerTitle: true,
       ),
-      body: GestureDetector(
-        onTap: () {
-          FocusManager.instance.primaryFocus?.unfocus();
-        },
-        child: Form(
-          key: formKey,
-          child: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(15),
-                    margin: EdgeInsets.only(top: 30),
-                    height: h * .33,
-                    width: w * .9,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Globals.textColor,
-                    ),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Center(
-                            child: Text(
-                              "Enter Achievements",
-                              style: TextStyle(
-                                fontSize: 23,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                          TextFormField(
-                            onFieldSubmitted: (val) {
-                              setState(() {
-                                Globals.achievement1c.text = val;
-                              });
-                            },
-                            validator: (val) {
-                              if (val!.isEmpty) {
-                                return "Plese Enter Course or Degree";
-                              }
-                            },
-                            controller: Globals.achievement1c,
-                            onChanged: (val) {
-                              setState(() {
-                                Globals.achievement1 = val;
-                              });
-                            },
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.delete_rounded,
-                                  size: 25,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              hintText: "Exceeded sales 17% avearage",
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 17,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ),
-                          TextFormField(
-                            onFieldSubmitted: (val) {
-                              setState(() {
-                                Globals.achievement2c.text = val;
-                              });
-                            },
-                            validator: (val) {
-                              if (val!.isEmpty) {
-                                return "Plese Enter Course or Degree";
-                              }
-                            },
-                            controller: Globals.achievement2c,
-                            onChanged: (val) {
-                              setState(() {
-                                Globals.achievement2 = val;
-                              });
-                            },
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.delete_rounded,
-                                  size: 25,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              hintText: "Exceeded sales 17% avearage",
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 17,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            height: h * .085,
-                            width: w,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.grey,
-                                width: 1,
-                              ),
-                            ),
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.add,
-                                size: 50,
-                                color: Colors.grey,
-                              ),
-                              alignment: Alignment.center,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 30,
               ),
-            ),
+              Container(
+                padding: EdgeInsets.all(20),
+                height: h * 0.45,
+                width: w * 0.9,
+                color: Globals.textColor,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(
+                        "Enter Achivements",
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      ...AllTextFields.map(
+                        (e) => getTextFiled(
+                          i: AllTextFields.indexOf(
+                            (e),
+                          ),
+                        ),
+                      ).toList(),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          setState(
+                            () {
+                              AllController.add(TextEditingController());
+                              AllTextFields.add(
+                                  getTextFiled(i: AllTextFields.length));
+                            },
+                          );
+                        },
+                        child: Container(
+                          height: 60,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            color: Colors.transparent,
+                          ),
+                          child: Icon(
+                            Icons.add,
+                            size: 50,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
+  }
+
+  Row getTextFiled({required int i}) {
+    return Row(children: [
+      Expanded(
+        flex: 12,
+        child: TextField(
+          controller: AllController[i],
+          decoration: InputDecoration(
+            hintText: "  Exceeded sales 17% avearage ",
+            hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
+          ),
+        ),
+      ),
+      Expanded(
+        flex: 2,
+        child: IconButton(
+          onPressed: () {
+            setState(
+              () {
+                AllController.removeAt(i);
+                AllTextFields.removeAt(i);
+              },
+            );
+          },
+          icon: Icon(
+            Icons.delete,
+            size: 40,
+          ),
+        ),
+      ),
+    ]);
   }
 }

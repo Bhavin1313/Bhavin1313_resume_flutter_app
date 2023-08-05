@@ -22,7 +22,7 @@ List<Map<String, dynamic>> MyBuildOptions = [
   {
     "name": "Experiences",
     "icon": "lib/utils/Assets/Build_Icons/thinking.png",
-    "route_name": "contact_info",
+    "route_name": "experiences",
   },
   {
     "name": "Technical Skills",
@@ -32,7 +32,7 @@ List<Map<String, dynamic>> MyBuildOptions = [
   {
     "name": "Interest/Hobbies",
     "icon": "lib/utils/Assets/Build_Icons/open-book.png",
-    "route_name": "contact_info",
+    "route_name": "interest",
   },
   {
     "name": "Projects",
@@ -52,6 +52,6 @@ List<Map<String, dynamic>> MyBuildOptions = [
   {
     "name": "Declaration",
     "icon": "lib/utils/Assets/Build_Icons/declaration.png",
-    "route_name": "contact_info",
+    "route_name": "declaration",
   },
 ];

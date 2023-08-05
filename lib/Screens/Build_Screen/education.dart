@@ -59,7 +59,7 @@ class _EducationState extends State<Education> {
             ),
           ),
         ],
-        toolbarHeight: 140,
+        toolbarHeight: 120,
         backgroundColor: Globals.bgColor,
         leading: IconButton(
           onPressed: () {
@@ -83,13 +83,14 @@ class _EducationState extends State<Education> {
         onTap: () {
           FocusManager.instance.primaryFocus?.unfocus();
         },
-        child: Center(
-          child: Form(
-            key: formKey,
-            child: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          child: SingleChildScrollView(
+            child: Center(
               child: Column(
                 children: [
                   Container(
+                    margin: EdgeInsets.only(top: 25),
                     padding: EdgeInsets.all(15),
                     height: h * .65,
                     width: w * .9,

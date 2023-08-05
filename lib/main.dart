@@ -8,7 +8,10 @@ import 'package:resume_app/Screens/splash_screen.dart';
 
 import 'Screens/Build_Screen/achievement.dart';
 import 'Screens/Build_Screen/carrier.dart';
+import 'Screens/Build_Screen/declaration.dart';
 import 'Screens/Build_Screen/education.dart';
+import 'Screens/Build_Screen/experiences.dart';
+import 'Screens/Build_Screen/interest.dart';
 import 'Screens/Build_Screen/personal_detail.dart';
 import 'Screens/Build_Screen/project.dart';
 import 'Screens/Build_Screen/technical_skills.dart';
@@ -31,7 +34,10 @@ void main() {
         'carrier_obj': (context) => Carrier(),
         'projects': (context) => Projects(),
         'achievements': (context) => Achievements(),
-        'technicalSkills': (context) => TechnicalSkills(),
+        'technicalSkills': (context) => Technical(),
+        'interest': (context) => Interest(),
+        'experiences': (context) => Experiences(),
+        'declaration': (context) => Declaration(),
       },
     ),
   );
