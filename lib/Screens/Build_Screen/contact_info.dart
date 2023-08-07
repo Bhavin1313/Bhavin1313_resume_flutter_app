@@ -453,7 +453,9 @@ class _ContectInfoState extends State<ContectInfo> {
                                       image = await Globals.picker.pickImage(
                                         source: ImageSource.camera,
                                       );
-                                      setState(() {});
+                                      setState(() {
+                                        Globals.imagePath = image!.path;
+                                      });
                                     },
                                     icon: Icon(
                                       Icons.camera_alt,
@@ -465,7 +467,9 @@ class _ContectInfoState extends State<ContectInfo> {
                                       image = await Globals.picker.pickImage(
                                         source: ImageSource.gallery,
                                       );
-                                      setState(() {});
+                                      setState(() {
+                                        Globals.imagePath = image!.path;
+                                      });
                                     },
                                     icon: Icon(
                                       Icons.panorama,

@@ -21,6 +21,45 @@ class _ExperiencesState extends State<Experiences> {
       appBar: AppBar(
         toolbarHeight: 120,
         backgroundColor: Globals.bgColor,
+        actions: [
+          IconButton(
+            onPressed: () {
+              formKey.currentState!.reset();
+              Globals.compnyc.clear();
+              Globals.schoolec.clear();
+              Globals.roles1c.clear();
+              Globals.address1c.clear();
+              Globals.address2c.clear();
+              Globals.address3c.clear();
+            },
+            icon: Icon(
+              Icons.refresh,
+              color: Globals.textColor,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Saved Successfully..."),
+                  ),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Plese Enter Full Detail..."),
+                  ),
+                );
+              }
+            },
+            icon: Icon(
+              Icons.check,
+              color: Globals.textColor,
+            ),
+          ),
+        ],
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);

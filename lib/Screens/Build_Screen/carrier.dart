@@ -36,6 +36,28 @@ class _CarrierState extends State<Carrier> {
               color: Globals.textColor,
             ),
           ),
+          IconButton(
+            onPressed: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Saved Successfully..."),
+                  ),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Plese Enter Full Detail..."),
+                  ),
+                );
+              }
+            },
+            icon: Icon(
+              Icons.check,
+              color: Globals.textColor,
+            ),
+          ),
         ],
         toolbarHeight: 120,
         backgroundColor: Globals.bgColor,

@@ -18,6 +18,7 @@ class Globals {
   static Color textColor = Color(0xffffffff);
   static Color bgColor = Color(0xff0475ff);
   static Color text1 = Color(0xffb0b0b0);
+  static Color pdfTop = Color(0xff353743);
 
   static int initialIndex = 0;
 
@@ -53,6 +54,7 @@ class Globals {
   static String dis = "";
   static String date = "";
   static String city = "";
+  static String? imagePath = "";
 
   static TextEditingController namec = TextEditingController();
   static TextEditingController emailc = TextEditingController();

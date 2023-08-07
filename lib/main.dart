@@ -4,7 +4,9 @@ import 'package:resume_app/Screens/Build_Screen/contact_info.dart';
 import 'package:resume_app/Screens/Build_Screen/references.dart';
 import 'package:resume_app/Screens/build_options.dart';
 import 'package:resume_app/Screens/login.dart';
+import 'package:resume_app/Screens/pdf.dart';
 import 'package:resume_app/Screens/splash_screen.dart';
+import 'package:resume_app/utils/globals.dart';
 
 import 'Screens/Build_Screen/achievement.dart';
 import 'Screens/Build_Screen/carrier.dart';
@@ -21,7 +23,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Globals.bgColor),
       routes: {
         '/': (context) => Splash(),
         'login': (context) => LogIn(),
@@ -38,6 +40,7 @@ void main() {
         'interest': (context) => Interest(),
         'experiences': (context) => Experiences(),
         'declaration': (context) => Declaration(),
+        'pdf': (context) => Pdf(),
       },
     ),
   );

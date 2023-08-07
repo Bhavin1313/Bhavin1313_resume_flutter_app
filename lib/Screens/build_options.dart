@@ -14,6 +14,14 @@ class _BuildOptionsState extends State<BuildOptions> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, 'pdf');
+        },
+        child: Icon(
+          Icons.print,
+        ),
+      ),
       body: Column(
         children: [
           Expanded(

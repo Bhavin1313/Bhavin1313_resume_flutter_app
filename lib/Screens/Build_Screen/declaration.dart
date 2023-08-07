@@ -10,6 +10,7 @@ class Declaration extends StatefulWidget {
 }
 
 class _DeclarationState extends State<Declaration> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool isTrue = false;
   @override
   Widget build(BuildContext context) {
@@ -49,189 +50,131 @@ class _DeclarationState extends State<Declaration> {
             ),
           ],
         ),
-        body: (isTrue == true)
+        body: (isTrue == false)
             ? Container()
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: Container(
-                      height: h * .7,
-                      width: w * .9,
-                      color: Colors.white,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "🎯",
-                            style: TextStyle(fontSize: 60),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          TextFormField(
-                            onSaved: (val) {
-                              Globals.dis = val!;
-                            },
-                            decoration: const InputDecoration(
-                                hintText: "Descripation",
-                                border: OutlineInputBorder()),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Divider(
-                            thickness: 3,
-                          ),
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("Date"),
-                              Text("Place(Interview\nVenue/city)"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              TextFormField(
-                                keyboardType: TextInputType.datetime,
-                                onSaved: (val) {
-                                  Globals.date = val!;
-                                },
-                                decoration: const InputDecoration(
-                                  hintText: "DD/MM/YYYY",
-                                  border: OutlineInputBorder(),
+            : GestureDetector(
+                onTap: () {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
+                child: Form(
+                  key: formKey,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Container(
+                            margin: EdgeInsets.only(top: 25),
+                            padding: EdgeInsets.all(20),
+                            height: h * .7,
+                            width: w * .9,
+                            color: Colors.white,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  "🎯",
+                                  style: TextStyle(fontSize: 60),
                                 ),
-                              ),
-                              TextFormField(
-                                onSaved: (val) {
-                                  Globals.city = val!;
-                                },
-                                decoration: const InputDecoration(
-                                    hintText: "Eg.Surat",
-                                    border: OutlineInputBorder()),
-                              ),
-                            ],
+                                TextFormField(
+                                  validator: (val) {
+                                    if (val!.isEmpty) {
+                                      return "Plese Enter Number";
+                                    }
+                                  },
+                                  onSaved: (val) {
+                                    Globals.dis = val!;
+                                  },
+                                  decoration: const InputDecoration(
+                                      hintText: "Descripation",
+                                      border: OutlineInputBorder()),
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                const Divider(
+                                  thickness: 3,
+                                ),
+                                Text("Date"),
+                                TextFormField(
+                                  validator: (val) {
+                                    if (val!.isEmpty) {
+                                      return "Plese Enter Number";
+                                    }
+                                  },
+                                  keyboardType: TextInputType.datetime,
+                                  onSaved: (val) {
+                                    Globals.date = val!;
+                                  },
+                                  decoration: InputDecoration(
+                                    hintText: "DD/MM/YYYY",
+                                    helperStyle: TextStyle(color: Colors.grey),
+                                    border: OutlineInputBorder(),
+                                  ),
+                                ),
+                                Text("Place(Interview\nVenue/city)"),
+                                TextFormField(
+                                  validator: (val) {
+                                    if (val!.isEmpty) {
+                                      return "Plese Enter Number";
+                                    }
+                                  },
+                                  onSaved: (val) {
+                                    Globals.city = val!;
+                                  },
+                                  decoration: const InputDecoration(
+                                      hintText: "Eg.Surat",
+                                      border: OutlineInputBorder()),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    if (formKey.currentState!.validate()) {
+                                      formKey.currentState!.save();
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              Text("Saved Successfully..."),
+                                        ),
+                                      );
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                              "Plese Enter Full Detail..."),
+                                        ),
+                                      );
+                                    }
+                                    ;
+                                  },
+                                  child: Center(
+                                    child: Container(
+                                      height: 40,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                        color: Globals.bgColor,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "SAVE",
+                                        style: TextStyle(
+                                            color: Globals.textColor,
+                                            fontSize: 20),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              )
-        //   Center(
-        //   child: Column(
-        //     children: [
-        //       Container(
-        //         margin: EdgeInsets.only(top: 20),
-        //         padding: EdgeInsets.all(10),
-        //         height: h * .1,
-        //         width: w * .9,
-        //         decoration: BoxDecoration(
-        //           borderRadius: BorderRadius.circular(10),
-        //           color: Colors.white,
-        //         ),
-        //         child: Row(
-        //           children: [
-        //             Text(
-        //               "Declaration",
-        //               style: TextStyle(
-        //                 fontSize: 22,
-        //                 color: Colors.blue,
-        //               ),
-        //             ),
-        //             Spacer(),
-        //             Switch(
-        //               value: isTrue,
-        //               onChanged: (val) {
-        //                 setState(() {
-        //                   isTrue = val;
-        //                 });
-        //               },
-        //             ),
-        //             (isTrue == false)
-        //                 ? Container()
-        //                 : Column(
-        //                     mainAxisAlignment: MainAxisAlignment.center,
-        //                     children: [
-        //                       Center(
-        //                         child: Container(
-        //                           height: h * .7,
-        //                           width: w * .9,
-        //                           color: Colors.white,
-        //                           child: Column(
-        //                             crossAxisAlignment: CrossAxisAlignment.start,
-        //                             children: [
-        //                               Switch(
-        //                                 value: isTrue,
-        //                                 onChanged: (val) {
-        //                                   setState(() {
-        //                                     isTrue = val;
-        //                                   });
-        //                                 },
-        //                               ),
-        //                               const Text(
-        //                                 "🎯",
-        //                                 style: TextStyle(fontSize: 60),
-        //                               ),
-        //                               const SizedBox(
-        //                                 height: 10,
-        //                               ),
-        //                               TextFormField(
-        //                                 onSaved: (val) {
-        //                                   Globals.dis = val!;
-        //                                 },
-        //                                 decoration: const InputDecoration(
-        //                                     hintText: "Descripation",
-        //                                     border: OutlineInputBorder()),
-        //                               ),
-        //                               const SizedBox(
-        //                                 height: 5,
-        //                               ),
-        //                               const Divider(
-        //                                 thickness: 3,
-        //                               ),
-        //                               const Row(
-        //                                 mainAxisAlignment:
-        //                                     MainAxisAlignment.spaceBetween,
-        //                                 children: [
-        //                                   Text("Date"),
-        //                                   Text("Place(Interview\nVenue/city)"),
-        //                                 ],
-        //                               ),
-        //                               Row(
-        //                                 children: [
-        //                                   TextFormField(
-        //                                     keyboardType: TextInputType.datetime,
-        //                                     onSaved: (val) {
-        //                                       Globals.date = val!;
-        //                                     },
-        //                                     decoration: const InputDecoration(
-        //                                       hintText: "DD/MM/YYYY",
-        //                                       border: OutlineInputBorder(),
-        //                                     ),
-        //                                   ),
-        //                                   TextFormField(
-        //                                     onSaved: (val) {
-        //                                       Globals.city = val!;
-        //                                     },
-        //                                     decoration: const InputDecoration(
-        //                                         hintText: "Eg.Surat",
-        //                                         border: OutlineInputBorder()),
-        //                                   ),
-        //                                 ],
-        //                               ),
-        //                             ],
-        //                           ),
-        //                         ),
-        //                       ),
-        //                     ],
-        //                   )
-        //           ],
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
-        );
+                ),
+              ));
   }
 }
